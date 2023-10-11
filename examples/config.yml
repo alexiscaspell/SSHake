@@ -1,0 +1,27 @@
+hops:
+    - internet_jump:
+        host: EXPOSED_HOP_IP
+        user: im-a-user
+        auth:
+            key: "/usr/src/ssh/id_rsa_exposed_hop"
+        tunnels:
+            - 2220:INTERNAL_HOP_1:22
+    - first_jump:
+        host: localhost
+        port: 2220
+        user: other-user
+        auth:
+            password: "ImATextPass"
+        tunnels: 
+            - 2222:DEV_SERVER_1:22
+    - desa:
+        host: localhost
+        port: 2222
+        user: im-a-dev-user
+        auth:
+            password: "ImAnotherTextPass"
+
+        tunnels:
+            - 23306:MYSQL_IP:3306 # MYSQL DESA
+            - 25432:POSTGRES_IP:5432 # POSTGRES DESA
+            - 28003:SONAR_IP:9000 # SONAR

@@ -46,6 +46,8 @@ def main(args):
 
     base_hop.connect()
 
+    logger = get_logger()
+
     logger.info('Tunneling done:')
 
     actual_hop = base_hop

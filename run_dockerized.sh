@@ -16,7 +16,7 @@ else
     INTERACTIVE=$2
 fi
 
-IMGNAME='SShake'
+IMGNAME='sshake'
 CFG_FILE=$(readlink -f "$1")
 
 docker build -t $IMGNAME . > /dev/null 2>&1
